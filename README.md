@@ -13,8 +13,7 @@ This app consist of thrree main components
 DarkSky weather API is used to fetch weather data (https://api.darksky.net/forecast/)
 
 ## UI
+ <img src="https://raw.githubusercontent.com/bGuom/Weather-App-using-Android-WebAppInterface-Web-to-from-Native-interaction/main/app_demo.JPG" width="240">
 
-
-  
   
   
