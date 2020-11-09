@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Weather Widget - Responsive</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="html.design">
+<!-- description -->
+<meta name="description" content="Weather Widget - Responsive Template">
+<link rel="shortcut icon" href="images/favicon.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
+<!-- Fonts and icons -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet"> 
+<!-- Reset CSS -->
+<link rel="stylesheet" href="css/reset.css">
+<!-- Style CSS -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Responsive  CSS -->
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<div class="weathar-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="title-wb">Weather Details</h2>
+			</div>
+		</div>
+		<div class="item1">				
+				<form>
+					<select id="placeList">
+					  <option value="NewYork">NewYork</option>
+					  <option value="London">London</option>
+					  <option value="Beijing">Beijing </option>
+					  <option value="Tokyo">Tokyo</option>
+					  <option value="Moscow">Moscow</option>
+					</select>
+				  </form>
+			</div>
+		<div class="item2" style="width: 150px;text-align: center;margin:0 auto;">
+				<input type="button" class="button" value="FindWeather" onClick="getAndroidWeather()" />
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+				<div class="col-widget-3">
+					<div class="currentWeather">
+						<div class="row align-items-center">
+							<div class="col-lg-6">
+								<div class="temp-desc">
+									<h3 id="temNow"></h3>
+									<h4 id="currtSum"></h4>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="icon-c" id="currtIcon">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="weatherforecast"><b style="color:antiquewhite;margin-bottom:10px;font-size:24px">Weather Forecast</b>
+
+						<ul>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day1"></span>
+								</div>
+								<div class="sm-day-icon" id="day1image">
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day1temMax"></div>
+									<div class="temp-m-day" id ="day1temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day2"></span>
+								</div>
+								<div class="sm-day-icon" id="day2image">
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day2temMax"></div>
+									<div class="temp-m-day" id ="day2temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname">
+									<span id="day3"></span>
+								</div>
+								<div class="sm-day-icon" id="day3image">
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day3temMax"></div>
+									<div class="temp-m-day" id ="day3temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day4"></span>
+								</div>
+								<div class="sm-day-icon" id="day4image">
+
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day4temMax"></div>
+									<div class="temp-m-day" id ="day4temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day5"></span>
+								</div>
+								<div class="sm-day-icon" id="day5image">
+
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day5temMax"></div>
+									<div class="temp-m-day" id ="day5temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day6"></span>
+								</div>
+								<div class="sm-day-icon" id="day6image">
+
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day6temMax"></div>
+									<div class="temp-m-day" id ="day6temMin"></div>
+								</div>
+							</li>
+							<li class="day old">
+								<div class="dayname" >
+									<span id="day7"></span>
+								</div>
+								<div class="sm-day-icon" id="day7image">
+
+								</div>
+								<div class="temps-day">
+									<div class="temp-day" id="day7temMax"></div>
+									<div class="temp-m-day" id ="day7temMin"></div>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- jquery latest version -->
+<script src="js/jquery.min.js"></script>
+<!-- popper.min.js -->
+<script src="js/popper.min.js"></script>    
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Skycons Icon -->
+
+
+<script>
+
+		window.onload = function(){
+			updateWebPage("NewYork");
+		};
+
+	 function getAndroidWeather() {
+        if(typeof Android !== "undefined" && Android !== null) {
+			var e = document.getElementById("placeList");
+			var place = e.options[e.selectedIndex].value;
+
+            updateWebPage(place);
+
+        } else {
+            alert("Not viewing in webview");
+        }
+
+
+    }
+
+    function getIcon(icon){
+			switch(icon) {
+				case "clear-day":
+					return "images/icon-04.svg";
+				case "clear-night":
+					return "images/icon-12.svg";
+				case "partly-cloudy-day":
+					return "images/icon-11.svg";
+				case "partly-cloudy-night":
+					return "images/icon-01.svg";
+				case "cloudy":
+					return "images/icon-05.svg";
+				case "rain":
+					return "images/icon-02.svg";
+				case "sleet":
+					return "images/icon-13.svg";
+				case "snow":
+					return "images/icon-07.svg";
+				case "wind":
+					return "images/icon-09.png";
+				case "fog":
+					return "images/icon-10.png";
+				default:
+					return "images/icon-08.svg";
+			}
+      }
+
+      function updateWebPage(place){
+      var curIcon = Android.getWeatherCurrentIcon(place);
+			document.getElementById("currtIcon").innerHTML =`<img src='${getIcon(curIcon)}' width="64" height="64"/>`;
+			document.getElementById("temNow").innerHTML =Android.getWeatherCurrentTemp(place)+"°C";
+			document.getElementById("currtSum").innerHTML =Android.getWeatherCurrentSummary(place);
+
+			var icon = Android.getWeatherDay1Icon(place);
+			document.getElementById("day1image").innerHTML = `<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day1temMax").innerHTML =Android.getWeatherDay1TempM(place)+"°C";
+			document.getElementById("day1temMin").innerHTML =Android.getWeatherDay1TempL(place)+"°C";
+			document.getElementById("day1").innerHTML =Android.getWeatherDay1(place);
+
+			var icon = Android.getWeatherDay3Icon(place);
+			document.getElementById("day3image").innerHTML = `<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day3temMax").innerHTML =Android.getWeatherDay3TempM(place)+"°C";
+			document.getElementById("day3temMin").innerHTML =Android.getWeatherDay3TempL(place)+"°C";
+			document.getElementById("day3").innerHTML =Android.getWeatherDay3(place);
+
+			var icon = Android.getWeatherDay4Icon(place);
+			document.getElementById("day4image").innerHTML = `<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day4temMax").innerHTML =Android.getWeatherDay4TempM(place)+"°C";
+			document.getElementById("day4temMin").innerHTML =Android.getWeatherDay4TempL(place)+"°C";
+			document.getElementById("day4").innerHTML =Android.getWeatherDay4(place);
+
+			var icon = Android.getWeatherDay5Icon(place);
+			document.getElementById("day5image").innerHTML = `<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day5temMax").innerHTML =Android.getWeatherDay5TempM(place)+"°C";
+			document.getElementById("day5temMin").innerHTML =Android.getWeatherDay5TempL(place)+"°C";
+			document.getElementById("day5").innerHTML =Android.getWeatherDay5(place);
+
+			var icon = Android.getWeatherDay6Icon(place);
+			document.getElementById("day6image").innerHTML = `<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day6temMax").innerHTML =Android.getWeatherDay6TempM(place)+"°C";
+			document.getElementById("day6temMin").innerHTML =Android.getWeatherDay6TempL(place)+"°C";
+			document.getElementById("day6").innerHTML =Android.getWeatherDay6(place);
+
+			var icon = Android.getWeatherDay7Icon(place);
+			document.getElementById("day7image").innerHTML =`<img src='${getIcon(icon)}'/>`;
+			document.getElementById("day7temMax").innerHTML =Android.getWeatherDay7TempM(place)+"°C";
+			document.getElementById("day7temMin").innerHTML =Android.getWeatherDay7TempL(place)+"°C";
+			document.getElementById("day7").innerHTML =Android.getWeatherDay7(place);
+      }
+
+
+
+
+</script>
+</body>
+</html>
